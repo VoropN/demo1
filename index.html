@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.js"></script>
+    <script src="http://chaijs.com/chai.js"></script>
+</head>
+<body>
+    <button onclick="this.nextElementSibling.hidden = !this.nextElementSibling.hidden">Switch</button>
+    <div hidden='true' class="happyTicketsByWorker">
+        <h4>Happy Tickets found By Worker</h4>
+        <div class="min">min: <input type="text" id='min'></div>
+        <div class="max">max: <input type="text" id="max"></div>
+        <div><button id='getDataHappyTickets'>Get Happy Tickets</button></div>
+        <div class="result">
+            <div id="result_TiketsArray"></div>
+        </div>
+        <div class="error" id='error'></div>
+    </div>
+    <script type="module" src="main.js"></script>
+    <div class="mocha" id='mocha'></div>
+</body>
+</html>
