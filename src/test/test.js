@@ -7,5 +7,6 @@ import { } from "./test6.js";
 import { } from "./test7.js";
 
 export * from "../../main.js";
+export const assert = chai.assert;
 
 mocha.run();
