@@ -93,7 +93,6 @@ const checkerContext = {
                 case max - min < 1:
                     error.reason.push(`Value max need to be more that min`);
                     break;
-                default: break;
             };
         };
 
