@@ -1,0 +1,36 @@
+.container-block {
+  max-width: 1190px;
+  padding: 40px;
+  margin: auto;
+}
+.form-group {
+  justify-content: center;
+}
+.task {
+  margin: 20px;
+}
+.button-getData {
+  width: 50%;
+  display: grid;
+  margin: auto;
+}
+textarea {
+  resize: none;
+  height: 45vh;
+  width: 90%;
+  display: flex;
+}
+.result {
+  margin: auto;
+  margin-top: 15px;
+  text-align: center;
+}
+.envelope__title, .palindrome__title {
+  display: flex;
+  align-items: flex-end;
+  font-weight: bold;
+}
+.button-add {
+  display: flex;
+  justify-content: flex-end;
+}

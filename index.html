@@ -1,27 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Demo1</title>
-    <script src="https://www.chaijs.com/chai.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <button onclick="this.nextElementSibling.hidden = !this.nextElementSibling.hidden">Switch</button>
-    <div hidden='true' class="happyTicketsByWorker">
-        <h4>Happy Tickets found By Worker</h4>
-        <div class="min">min: <input type="text" id='min'></div>
-        <div class="max">max: <input type="text" id="max"></div>
-        <div><button id='getDataHappyTickets'>Get Happy Tickets</button></div>
-        <div class="result">
-            <div id="result_TiketsArray"></div>
+    <div class="container-block">
+        <ul id="nav" class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Chess board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Envelope packing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sort Triangle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Palindrome</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Happy Tickets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Numerical Sequence</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Fibonacci</a>
+            </li>
+        </ul>
+        <div class="contant-block" id="content">
+            <div class="task" id="task1" hidden>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Length: </label>
+                        <input data-value="length" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Width: </label>
+                        <input data-value="width" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Symbol: </label>
+                        <input data-value="symbol" class="form-control" type="text" maxlength="1">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" data-func="board" class="btn btn-success button-getData">Get Chess
+                        Boad</button>
+                </div>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="task" id="task2" hidden>
+                <div class="form-group row">
+                    <div class="col-2 envelope__title">Envelope 1</div>
+                    <div class="col-2">
+                        <label>Width: </label>
+                        <input data-value="width" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Height: </label>
+                        <input data-value="height" class="form-control" type="number" min="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2 envelope__title">Envelope 2</div>
+                    <div class="col-2">
+                        <label>Width: </label>
+                        <input data-value="width" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Height: </label>
+                        <input data-value="height" class="form-control" type="number" min="1">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
+            <div class="task" id="task3" hidden>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label class='title'>Triangle 1. Vertices: </label>
+                        <input data-value="vertices" class="form-control" type="text" maxlength="3">
+                    </div>
+                    <div class="col-2">
+                        <label>Side1: </label>
+                        <input data-value="side1" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Side2: </label>
+                        <input data-value="side2" class="form-control" type="number" min="1">
+                    </div>
+                    <div class="col-2">
+                        <label>Side3: </label>
+                        <input data-value="side3" class="form-control" type="number" min="1">
+                    </div>
+                </div>
+                <div class="button-add">
+                    <button class="btn btn-warning" id="addTriangle">Add Triangle</button>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
+            <div class="task" id="task4" hidden>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label>Enter a number to search for a palindrome: </label>
+                        <textarea data-value="number" class="form-control incoming-control"></textarea>
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
+            <div class="task" id="task5" hidden>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label>Min: </label>
+                        <input data-value="min" class="form-control incoming-control" maxlength="8">
+                    </div>
+                    <div class="col-3">
+                        <label>Max: </label>
+                        <input data-value="max" class="form-control incoming-control" maxlength="8">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
+            <div class="task" id="task6" hidden>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label>Length: </label>
+                        <input data-value="length" class="form-control incoming-control" maxlength="3">
+                    </div>
+                    <div class="col-3">
+                        <label>Min Sqrt: </label>
+                        <input data-value="minSqrt" class="form-control incoming-control" maxlength="7">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
+            <div class="task" id="task7" hidden>
+                <div class="form-group row">
+                    <div class="col-1">
+                        <label>Length: </label>
+                        <input data-value="length" class="form-control incoming-control" type="text" maxlength="2">
+                    </div>
+                    <div class="col-1">
+                        <label>Min: </label>
+                        <input data-value="min" class="form-control incoming-control" type="text" maxlength="2">
+                    </div>
+                    <div class="col-1">
+                        <label>Max: </label>
+                        <input data-value="max" class="form-control incoming-control" type="text" maxlength="2">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <button type="button" class="btn btn-success button-getData">Get Result</button>
+                </div>
+                <div class="result" contenteditable="true"></div>
+            </div>
         </div>
-        <div class="error" id='error'></div>
     </div>
     <script type="module" src="main.js"></script>
-    <div class="mocha" id='mocha'></div>
 </body>
+
 </html>
