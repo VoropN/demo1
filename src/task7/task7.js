@@ -3,9 +3,9 @@ import { Context } from './context.js';
 import { checker } from './checkerFibonacci.js';
 
 "use strict";
-export const fibonacci = function fibonacciFucn({ length = '', min = '', max = '' }) {
+export const fibonacci = function fibonacciFucn({ length = '', min = '', max = '' } = {}) {
   let context = new Context(length, min, max);
-  let error = checker(context);
+  let error = checker(context, arguments.length);
   if (error.status) return error;
   let arrayNumbers = [];
   if (length) {

@@ -1,10 +1,10 @@
 import { Error } from '../error.js';
 
 "use strict";
-export const checker = function checkerFibonacci({ length, min, max }) {
+export const checker = function checkerFibonacci({ length, min, max }, argsLength) {
   let error = new Error;
-  if (!length && !min && !max) {
-    error.add(`Arguments shouldn't to be empty!`)
+  if (Object.is('', length) && Object.is('', min) && Object.is('', max) || !argsLength) {
+    error.add(`Arguments aren't value!`)
   } else if (length) {
     // length
     switch (true) {
@@ -39,6 +39,9 @@ export const checker = function checkerFibonacci({ length, min, max }) {
       case min > 69:
         error.add('Min is too big! Min value should be less than 70!');
         break;
+      case +min !== Math.floor(+min):
+        error.add(`Min should be integer!`);
+        break;
     };
     // Max
     switch (true) {
@@ -53,6 +56,9 @@ export const checker = function checkerFibonacci({ length, min, max }) {
         break;
       case max > 70:
         error.add('Max is too big! Max value should be less than 71!');
+        break;
+      case +max !== Math.floor(+max):
+        error.add(`Max should be integer!`);
         break;
     };
     // max need to be more than min

@@ -1,52 +1,71 @@
 import { fibonacci } from './task7.js';
 
-export const test7 = () => describe('fibonacci', function () {
-  it(`Error. Length isn't number!  => fibonacci(new Context({ length: 'e' }))`, function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: 'e' })), {status: "failed", reason: ["incorrect format length"]});
+export const test7 = () => describe('Fibonacci', function () {
+  describe('Should return array of numbers', function () {
+    it(`if length is indicated! => fibonacci({ length: 5 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: 5 }), '[0,1,1,2,3]');
+    });
+    it(`if length is number casts to string! => fibonacci({ length: "5" })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: '5' }), '[0,1,1,2,3]');
+    });
+    it(`if length is zero! => fibonacci({ length: 0 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: 0 }), '[]');
+    });
+    it(`if length, min and max are indicated then length will only be taken => fibonacci({ length: 10, min: 11, max: 13 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: 10, min: 11, max: 13 }), '[0,1,1,2,3,5,8,13,21,34]');
+    });
+    it(`if min and max are indicated! => fibonacci({ min: 0, max: 13 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 0, max: 13 }), '[0,1,1,2,3,5,8,13,21,34,55,89,144]');
+    });
+    it(`if min and max are arbitrary values! => fibonacci({ min: 12, max: 13 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 12, max: 13 }), '[144]');
+    });
+    it(`if min: 0, max: 0! => fibonacci({ min: 0, max: 0 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 0, max: 0 }), '[]');
+    });
+    it(`if min: 0, max: 1! => fibonacci({ min: 0, max: 1 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 0, max: 1 }), '[0]');
+    });
   });
-  it(`Error. Length is negative value!  => fibonacci(new Context({ length: -10 }))`, function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: -10 })), {status: "failed", reason: ["length cannot be negative value"]});
-  });
-  it('Empty array! => new Context({ length: 0 }))', function () {
-    chai.assert.empty(fibonacci(new Context({ length: 0 })));
-  });
-  it("Success. First value => fibonacci(new Context({ length: 1 })));", function () {
-    chai.assert.equal(fibonacci(new Context({ length: 1 })), 0);
-  });
-  it("Success. Two value => fibonacci(new Context({ length: 2 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: 2 })), [ 0, 1 ]);
-  });
-  it("Success. Three value => fibonacci(new Context({ length: 3 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: 3 })), [ 0, 1, 1 ]);
-  });
-  it("Success. Ten value => fibonacci(new Context({ length: 10 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: 10 })), [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
-  });
-  it("Error. Max value <= 100 => fibonacci(new Context({ length: 100 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ length: 101 })), {status: "failed", reason: ["Max length cannot be more 100"]});
-  });
-  it("Error. Max value for range <= 70 => fibonacci(new Context({ min: 0, max: 80 }));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 0, max: 80 })), {status: "failed", reason: ["Max value for range should be less 70"]});
-  });
-  it("Error. Max value for range <= 70 => fibonacci(new Context({ min: 0, max: 70 }));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 0, max: 70 })), [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986, 102334155, 165580141, 267914296, 433494437, 701408733, 1134903170, 1836311903, 2971215073, 4807526976, 7778742049, 12586269025, 20365011074, 32951280099, 53316291173, 86267571272, 139583862445, 225851433717, 365435296162, 591286729879, 956722026041, 1548008755920, 2504730781961, 4052739537881, 6557470319842, 10610209857723, 17167680177565, 27777890035288, 44945570212853, 72723460248141, 117669030460994]);
-  });
-  it("Error. Max value === min value => fibonacci(new Context({ min: 11, max: 11 }));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 11, max: 11 })), {status: "failed", reason: ["value max need to be more that min"]});
-  });
-  it("Error. Incorrect value min, max => fibonacci(new Context({ min: 10, max: 'e' }));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 10, max: 'e' })), {status: "failed", reason: ["incorrect format for fields: min or max"]});
-  });
-  it("Error. Empty arguments! => fibonacci();", function () {
-    chai.assert.deepEqual(fibonacci(), {status: "failed", reason: ["Argument shouldn't to be empty!"]});
-  });
-  it("Success. 12 value => fibonacci(new Context({ min: 11, max: 12 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 11, max: 12 })), [89]);
-  });
-  it("Success. from 0 to 13 => fibonacci(new Context({ min: 0, max: 13 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 0, max: 13 })), [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]);
-  });
-  it("Success. First value for range => fibonacci(new Context({ min: 0, max: 1 })));", function () {
-    chai.assert.deepEqual(fibonacci(new Context({ min: 0, max: 1 })), [0]);
+  describe('Should return error', function () {
+    it(`if length isn't number! => fibonacci({ length: "10e" }))`, function () {
+      chai.assert.deepEqual(fibonacci({ length: '10e' }), { reason: ['Length must be a number!'] });
+    });
+    it(`if length is negative value! => fibonacci({ length: -10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: -10 }), { reason: ['Length can\'t be less than zero!'] });
+    });
+    it(`if length isn't integer! => fibonacci({ length: 10.2 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: 10.2 }), { reason: ['Length should be integer!'] });
+    });
+    it(`if length empty string! => fibonacci({ length: "" })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: '' }), { reason: ['Arguments aren\'t value!'] });
+    });
+    it(`if length more 100! => fibonacci({ length: 101 })`, function () {
+      chai.assert.deepEqual(fibonacci({ length: 101 }), { reason: ['Length is too big!'] });
+    });
+    it(`if min and max are empty strings! => fibonacci({ min: "", max: "" })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: '', max: '' }), { reason: ['Arguments aren\'t value!'] });
+    });
+    it(`if min or max isn't defined! => fibonacci({ min: '', max: 10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: '', max: 10 }), { reason: ['Min isn\'t defined!'] });
+    });
+    it(`if min or max isn't number! => fibonacci({ min: 'b', max: 10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 'b', max: 10 }), { reason: ['Min must be a number!'] });
+    });
+    it(`if min or max is negative value! => fibonacci({ min: -10, max: 10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: -10, max: 10 }), { reason: ['Min can\'t be less than zero!'] });
+    });
+    it(`if min or max isn't integer! => fibonacci({ min: 5.4, max: 10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 5.4, max: 10 }), { reason: ['Min should be integer!'] });
+    });
+    it(`if min is equal or more max! => fibonacci({ min: 10, max: 10 })`, function () {
+      chai.assert.deepEqual(fibonacci({ min: 10, max: 10 }), { reason: ['Value max need to be more that min!'] });
+    });
+    it('if an empty object is passed! => fibonacci({})', function () {
+      chai.assert.deepEqual(fibonacci({}), { reason: ['Arguments aren\'t value!'] });
+    });
+    it('if function called without arguments! => fibonacci()', function () {
+      chai.assert.deepEqual(fibonacci(), { reason: ['Arguments aren\'t value!'] });
+    });
   });
 });
