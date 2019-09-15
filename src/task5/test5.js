@@ -27,7 +27,7 @@ export const test5 = () => describe('Happy Tickets', function () {
     it('if arguments not passed!! => new HappyTickets().result', function () {
       chai.assert.deepEqual(new HappyTickets().result, { reason: ['Arguments not passed!'] });
     });
-    it('if max is less than 10! => new HappyTickets().result', function () {
+    it('if max is less than 10! => new HappyTickets({ min: 1, max: 9 }).result', function () {
       chai.assert.deepEqual(new HappyTickets({ min: 1, max: 9 }).result, { reason: ['Max can\'t be less than 10!'] });
     });
     it('if max or min is less than min or equal! => new HappyTickets({ min: 9999, max: 9998 }).result', function () {

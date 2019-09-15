@@ -1,8 +1,12 @@
 import { Error } from '../error.js';
 
 "use strict";
-export const checker = function checkerNumericalSequence(length, minSqrt) {
+export const checker = function checkerNumericalSequence(length, minSqrt, argsLength) {
   let error = new Error;
+  if (!argsLength) {
+    error.add('Arguments not passed!');
+    return error;
+  };
   // length
   switch (true) {
     case Object.is('', length):
