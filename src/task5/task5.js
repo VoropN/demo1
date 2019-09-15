@@ -3,12 +3,12 @@ import { Context } from './context.js'
 
 "use strict";
 export class HappyTickets {
-  constructor({min, max}) {
+  constructor({min = '', max = ''} = {}) {
     this.context = new Context(min, max);
+    this.error = checker(this.context, arguments.length);
   }
   get result () {
-    let error = checker(this.context);
-    if (error.status) return error;
+    if (this.error.status) return this.error;
     if ( !this.hasOwnProperty('ticketsArray') ) {
       this.ticketsArray = this.calcTicketsArray(this.context);
       this.equalSumStartEndArray = this.сompareSumStartEnd(this.ticketsArray);

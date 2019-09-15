@@ -1,8 +1,12 @@
 import { Error } from '../error.js';
 
 "use strict";
-export const checker = function checkerHappyTickets({ min, max }) {
+export const checker = function checkerHappyTickets({ min, max }, argsLength) {
   let error = new Error();
+  if (!argsLength) {
+    error.add('Arguments not passed!');
+    return error;
+  };
   // Min
   switch (true) {
     case Object.is('', min):
