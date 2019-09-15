@@ -1,7 +1,7 @@
 import { checker } from './checkerTask1.js';
 
 "use strict";
-export const board = function makeChessBoard({length = 0, width = 0, symbol = ''}) {
+export const board = function makeChessBoard({length = '', width = '', symbol = ''}) {
   let error = checker(length, width, symbol);
   if (error.status) return error;
   let separateSymbol = ' ';

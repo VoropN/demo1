@@ -1,46 +1,38 @@
 import { Packager } from './task2.js';
 
-export const test2 = () => describe('Envelope', function () {
-  it(`new Packager([ new Envelope({width: 9, height: 5}),
-    new Envelope({width: 9.499, height: 1}) ]).strategy.result`, function () {
-      chai.assert.equal(new Packager([
-      new Envelope({ width: 9, height: 5 }),
-      new Envelope({ width: 9.499, height: 1 }),
-    ]).strategy.result, 0);
+export const test2 = () => describe('Envelopes', function () {
+  describe('Should be completed successfully:', function () {
+    it('with the result: 0 => new Packager({ width: 9, height: 5}, { width: 9.499, height: 1 }).strategy', function () {
+      chai.assert.equal(new Packager({ width: 9, height: 5}, { width: 9.499, height: 1 }).strategy, '{"canPut":false,"message":"impossible to put","result":0}');
+    });
+    it('with the result: Envelope2 => new Packager({ width: 9, height: 5 }, { width: 9.498, height: 1 }).strategy', function () {
+      chai.assert.equal(new Packager({ width: 9, height: 5 }, { width: 9.498, height: 1 }).strategy, '{"canPut":true,"message":"put big side in diagonal!","inside":{"width":9.498,"height":1,"name":"Envelope2"},"outside":{"width":9,"height":5,"name":"Envelope1"},"result":"Envelope2"}');
+    });
+    it('with the result: Envelope2 => new Packager({ width: 5, height: 9 }, { width: 9.498, height: 1}).strategy', function () {
+      chai.assert.equal(new Packager({ width: 9, height: 5 }, { width: 9.498, height: 1 }).strategy, '{"canPut":true,"message":"put big side in diagonal!","inside":{"width":9.498,"height":1,"name":"Envelope2"},"outside":{"width":9,"height":5,"name":"Envelope1"},"result":"Envelope2"}');
+    });
+    it('if the some arguments are numbers cast to strings. With the result: Envelope1 => new Packager({width: "4", height: "9"}, {width: "5", height: "9.498"}).strategy', function () {
+      chai.assert.equal(new Packager({ width: "4", height: "9" }, { width: "5", height: "9.498" }).strategy, '{"canPut":true,"message":"put big side in parallel!","inside":{"width":4,"height":9,"name":"Envelope1"},"outside":{"width":5,"height":9.498,"name":"Envelope2"},"result":"Envelope1"}');
+    });
   });
-  it(`new Packager([ new Envelope({width: 5, height: 9}),
-    new Envelope({width: 9.498, height: 1}) ]).strategy.result`, function () {
-      chai.assert.equal(new Packager([
-      new Envelope({ width: 5, height: 9 }),
-      new Envelope({ width: 9.498, height: 1 }),
-    ]).strategy.result, 'Envelope4');
-  });
-  it(`Error. Width is string! => new Packager([ new Envelope({width: 'f', height: 5}),
-    new Envelope({width: 8.99, height: 4}) ])`, function () {
-      chai.assert.deepEqual(new Packager([
-      new Envelope({ width: 'f', height: 5 }),
-      new Envelope({ width: 8.99, height: 4 }),
-    ]),  [{status: "failed", reason: ["width must be a number!"]}, {width: 8.99, height: 4, name: "Envelope5"}]);
-  });
-  it(`Error. Width is 0 => new Packager([ new Envelope({ width: 0, height: 5 }),
-    new Envelope({width: 8.99, height: 4}) ])`, function () {
-      chai.assert.deepEqual(new Packager([
-      new Envelope({ width: 0, height: 5 }),
-      new Envelope({ width: 8.99, height: 4 }),
-    ]),  [{reason: ["width cannot be zero or less!"], status: "failed"}, {width: 8.99, height: 4, name: "Envelope6"}]);
-  });
-  it(`Error. Not all arguments passed => new Packager([ new Envelope(), new Envelope({width: 8.99, height: 4}) ])`, function () {
-    chai.assert.deepEqual(new Packager([
-      new Envelope(),
-      new Envelope({ width: 8.99, height: 4 }),
-    ]),  [{reason: ["argsuments not defined!", "width not defined!", "height not defined!"],
-        status: "failed"}, {width: 8.99, height: 4, name: "Envelope7"}]);
-  });
-  it(`Error. One argument passed => new Packager([ new Envelope({width: 8.99, height: 4}) ])`, function () {
-    chai.assert.deepEqual(new Packager([new Envelope({ width: 8.99, height: 4 }),
-    ]),  {reason: ["Not enough arguments for Packager!"], status: "failed"});
-  });
-  it(`Error. No arguments filed! => new Packager()`, function () {
-    chai.assert.deepEqual(new Packager(),  {reason: ["Not enough arguments for Packager!"], status: "failed"});
+  describe('Should return error: ', function () {
+    it('if the some arguments aren\'t numbers => new Packager({ width: "t", height: 9 }, { width: 5, height: 9.498 }).strategy', function () {
+      chai.assert.deepEqual(new Packager({ width: 't', height: 9 }, { width: 5, height: 9.498 }).strategy, [{ reason: ['Width Envelope1 must be a number!'] }]);
+    });
+    it('if the some arguments aren\'t defined => new Packager({ width: "", height: 9}, { width: 5, height: 9.498 }).strategy', function () {
+      chai.assert.deepEqual(new Packager({ width: '', height: 9 }, { width: 5, height: 9.498 }).strategy, [{ reason: ['Width Envelope1 isn\'t defined!'] }]);
+    });
+    it('if some arguments are missing => new Packager({ width: 10, height: 9}, { height: 9.498 }).strategy', function () {
+      chai.assert.deepEqual(new Packager({ width: 10, height: 9 }, { height: 9.498 }).strategy, [{ reason: ['Width Envelope2 isn\'t defined!'] }]);
+    });
+    it('if no arguments passed => new Packager({}).strategy', function () {
+      chai.assert.deepEqual(new Packager({}).strategy, [{ reason: ['Not enough envelopes!'] }]);
+    });
+    it('if no arguments passed => new Packager().strategy', function () {
+      chai.assert.deepEqual(new Packager().strategy, [{ reason: ['Not enough envelopes!'] }]);
+    });
+    it('if one ore more filds equal zero => new Packager({ width: 0, height: 9 }, { width: 9.498, height: 1}).strategy', function () {
+      chai.assert.deepEqual(new Packager({ width: 0, height: 9 }, { width: 9.498, height: 1 }).strategy, [{ reason: ['Width Envelope1 need to be more than zero!'] }]);
+    });
   });
 });

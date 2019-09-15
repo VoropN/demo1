@@ -35,7 +35,7 @@ inputs.forEach((input, i) => {
 document.querySelectorAll('.incoming-control').forEach((input) => {
   input.addEventListener('input', function (event) {
     if (event.target.classList.contains('string')) {
-      event.target.value = event.target.value.replace(/\.{1,1}[^\d]/g, '');
+      event.target.value = event.target.value.replace(/[^\d]/g, '');
     } else {
       let value = Number(event.target.value.replace(/[^\d]/g, ''));
       event.target.value = Object.is(event.target.value, '') ? '' : value;
@@ -101,4 +101,5 @@ let triangleGridClon = triangleGrid.cloneNode(true);
 resetTriangle.addEventListener('click', function (event) {
   numberTriangle = 1;
   triangleGrid.innerHTML = triangleGridClon.innerHTML;
+  addTriangle.removeAttribute('disabled')
 });

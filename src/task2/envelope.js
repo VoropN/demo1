@@ -1,7 +1,7 @@
 export class Envelope {
-  constructor({ width = 0, height = 0, name }) {
-    this.width = Number(width);
-    this.height = Number(height);
+  constructor({ width = '', height = '', name }) {
+    this.width = !Number(width) ? width : Number(width);
+    this.height = !Number(height) ? height : Number(height);
     this.name = name;
   }
 

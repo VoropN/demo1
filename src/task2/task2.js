@@ -10,6 +10,7 @@ export class Packager {
 
   get strategy() {
     let errorArray = [];
+    if(this.envelopeArray.length < 2) return [checker({})];
     this.envelopeArray.forEach((envelope) => {
       let error = checker(envelope);
       if (error.status) return errorArray.push(error);

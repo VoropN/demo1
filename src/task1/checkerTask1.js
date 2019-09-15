@@ -4,26 +4,32 @@ export const checker = function checkerChessBoard(length, width, symbol) {
   let error = new Error();
   // Length
   switch (true) {
-    case !length:
+    case Object.is(length, ''):
       error.add('Length isn\'t defined!');
       break;
-    case length < 0:
-      error.add('Length can\'t be less than zero!');
+    case length <= 0:
+      error.add('Length need to be more than zero!');
       break;
     case isNaN(length):
       error.add('Length must be a number!');
       break;
+    case +length !== Math.floor(length):
+      error.add('Length must be an integer!');
+      break;
   };
   // Width
   switch (true) {
-    case !width:
+    case Object.is(width, ''):
       error.add('Width isn\'t defined!');
       break;
-    case width < 0:
-      error.add('Width can\'t be less than zero!');
+    case width <= 0:
+      error.add('Width need to be more than zero!');
       break;
     case isNaN(width):
       error.add('Width must be a number!');
+      break;
+    case +width !== Math.floor(width):
+      error.add('Width must be an integer!');
       break;
   };
   // Symbol
