@@ -1,6 +1,6 @@
 .container-block {
   max-width: 1190px;
-  padding: 40px;
+  padding: 60px 20px 20px;
   margin: auto;
 }
 .form-group {
@@ -30,7 +30,15 @@ textarea {
   align-items: flex-end;
   font-weight: bold;
 }
-.button-add {
+.buttons-addReset {
   display: flex;
   justify-content: flex-end;
+}
+.buttons-addReset > button {
+  margin: 15px;
+}
+.test {
+  position: fixed;
+  left: 35px;
+  top: 10px
 }

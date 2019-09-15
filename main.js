@@ -34,8 +34,12 @@ inputs.forEach((input, i) => {
 // incoming control for number
 document.querySelectorAll('.incoming-control').forEach((input) => {
   input.addEventListener('input', function (event) {
-    let value = Number(event.target.value.replace(/[^\d]/g, ''));
-    event.target.value = Object.is(event.target.value, '') ? '' : value;
+    if (event.target.classList.contains('string')) {
+      event.target.value = event.target.value.replace(/\.{1,1}[^\d]/g, '');
+    } else {
+      let value = Number(event.target.value.replace(/[^\d]/g, ''));
+      event.target.value = Object.is(event.target.value, '') ? '' : value;
+    }
   });
 });
 
@@ -88,6 +92,13 @@ addTriangle.addEventListener('click', function (event) {
     input.setAttribute('id', `taskInputAdd${numberTriangle}${i}`);
     label[i].setAttribute('for', `taskInputAdd${numberTriangle}${i}`);
   });
-  triangleHTML = triangleHTML.parentNode.insertBefore(newTriangle, triangleHTML.nextElementSibling);
+  triangleGrid.appendChild(newTriangle);
   if (numberTriangle >= endTriangle) this.setAttribute('disabled', true);
+});
+
+// reset Triangle
+let triangleGridClon = triangleGrid.cloneNode(true);
+resetTriangle.addEventListener('click', function (event) {
+  numberTriangle = 1;
+  triangleGrid.innerHTML = triangleGridClon.innerHTML;
 });

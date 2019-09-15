@@ -8,20 +8,14 @@
     <title>Demo1</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container-block">
+        <div class="test">
+            <a href="./test.html" class="btn btn-danger">Test</a>
+        </div>
         <ul id="nav" class="nav nav-pills nav-fill">
             <li class="nav-item">
                 <a class="nav-link" href="#">Chess board</a>
@@ -96,25 +90,28 @@
                 <div class="result" contenteditable="true"></div>
             </div>
             <div class="task" id="task3" hidden>
-                <div class="form-group row">
-                    <div class="col-2">
-                        <label class='title'>Triangle 1. Vertices: </label>
-                        <input data-value="vertices" class="form-control" type="text" maxlength="3">
-                    </div>
-                    <div class="col-2">
-                        <label>Side1: </label>
-                        <input data-value="side1" class="form-control" type="number" min="1">
-                    </div>
-                    <div class="col-2">
-                        <label>Side2: </label>
-                        <input data-value="side2" class="form-control" type="number" min="1">
-                    </div>
-                    <div class="col-2">
-                        <label>Side3: </label>
-                        <input data-value="side3" class="form-control" type="number" min="1">
+                <div class="triangle-grid" id="triangleGrid">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label class='title'>Triangle 1. Vertices: </label>
+                            <input data-value="vertices" class="form-control" type="text" maxlength="3">
+                        </div>
+                        <div class="col-2">
+                            <label>Side1: </label>
+                            <input data-value="side1" class="form-control" type="number" min="1">
+                        </div>
+                        <div class="col-2">
+                            <label>Side2: </label>
+                            <input data-value="side2" class="form-control" type="number" min="1">
+                        </div>
+                        <div class="col-2">
+                            <label>Side3: </label>
+                            <input data-value="side3" class="form-control" type="number" min="1">
+                        </div>
                     </div>
                 </div>
-                <div class="button-add">
+                <div class="buttons-addReset">
+                    <button class="btn btn-warning" id="resetTriangle">Reset</button>
                     <button class="btn btn-warning" id="addTriangle">Add Triangle</button>
                 </div>
                 <div class="button-block">
@@ -126,7 +123,7 @@
                 <div class="form-group row">
                     <div class="col-6">
                         <label>Enter a number to search for a palindrome: </label>
-                        <textarea data-value="number" class="form-control incoming-control"></textarea>
+                        <textarea data-value="number" class="form-control incoming-control string"></textarea>
                     </div>
                 </div>
                 <div class="button-block">
