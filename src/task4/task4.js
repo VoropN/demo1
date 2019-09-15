@@ -9,10 +9,10 @@ const center = function iteratingValuesFromCenter(left, right, str, length) {
   return str.slice(left + 1, right);
 };
 
-export const palindrome = function getPalindrome({ number = '' }) {
+export const palindrome = function getPalindrome({ number = '' } = {}) {
   let valueForFalse = 0;
   let str = String(number);
-  let error = checker(str);
+  let error = checker(str, number);
   if (error.status) return error;
   let length = str.length;
   let arrayResult = [];
