@@ -11,21 +11,12 @@
     <script src="https://www.chaijs.com/chai.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.0/mocha.js"></script>
-    <style>
-        .home {
-            position: fixed;
-            left: 35px;
-            top: 10px
-        }
-    </style>
 </head>
-
 <body>
-    <div class="home">
+    <div class="home" style="position: fixed; left: 35px; top: 10px;">
         <a href="./" class="btn btn-danger">Home</a>
     </div>
-    <script type="module" src="test.js"></script>
     <div id='mocha'></div>
+    <script type="module" src="test.js"></script>
 </body>
-
 </html>

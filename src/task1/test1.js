@@ -28,5 +28,8 @@ export const test1 = () => describe('Chess Board', function () {
     it('if symbol have more than one element! => board({ length: 5, width: 5, symbol: "$$" })', function () {
       chai.assert.deepEqual(board({ length: 5, width: 5, symbol: '$$' }), { reason: ['Length symbol should not be more than one!'] });
     });
+    it('if the function is called without arguments! => board()', function () {
+      chai.assert.deepEqual(board(), { reason: ['Arguments aren\'t value!'] });
+    });
   });
 });

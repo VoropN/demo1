@@ -1,7 +1,11 @@
 import { Error } from '../error.js';
 
-export const checker = function checkerChessBoard(length, width, symbol) {
+export const checker = function checkerChessBoard(length, width, symbol, argsLength) {
   let error = new Error();
+  if (Object.is('', length) && Object.is('', width) && Object.is('', symbol) || !argsLength) {
+    error.add(`Arguments aren't value!`)
+    return error;
+  };
   // Length
   switch (true) {
     case Object.is(length, ''):

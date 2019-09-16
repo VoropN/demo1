@@ -1,5 +1,5 @@
 import { checker } from './checkerHappyTickets.js';
-import { Context } from './context.js'
+import { Context } from './context.js';
 
 "use strict";
 export class HappyTickets {
