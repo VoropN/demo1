@@ -11,13 +11,13 @@ export const test1 = () => describe('Chess Board', function () {
   });
   describe('Should return error: ', function () {
     it('if it doesn’t have enough number of arguments (fewer than three)! => board({ length: "3", width: "6" })', function () {
-      chai.assert.deepEqual(board({ length: '3', width: '6' }), { reason: ['Symbol isn\'t defined!'] });
+      chai.assert.deepEqual(board({ length: '3', width: '6' }), { reason: ['Symbol is not defined!'] });
     });
     it('if one of the arguments isn’t defined! => board({ length: 10, width: "", symbol: "%" }', function () {
-      chai.assert.deepEqual(board({ length: 10, width: '', symbol: '%' }), { reason: ['Width isn\'t defined!'] });
+      chai.assert.deepEqual(board({ length: 10, width: '', symbol: '%' }), { reason: ['Width is not defined!'] });
     });
     it('if one of the arguments isn’t defined! => board({ width: 10, symbol: "%" }', function () {
-      chai.assert.deepEqual(board({ width: 10, symbol: '%' }), { reason: ['Length isn\'t defined!'] });
+      chai.assert.deepEqual(board({ width: 10, symbol: '%' }), { reason: ['Length is not defined!'] });
     });
     it('if one of the arguments isn’t valid! => board({ length: 10, width: "t", symbol: "%" }', function () {
       chai.assert.deepEqual(board({ length: 10, width: 't', symbol: '%' }), { reason: ['Width must be a number!'] });
@@ -29,7 +29,7 @@ export const test1 = () => describe('Chess Board', function () {
       chai.assert.deepEqual(board({ length: 5, width: 5, symbol: '$$' }), { reason: ['Length symbol should not be more than one!'] });
     });
     it('if the function is called without arguments! => board()', function () {
-      chai.assert.deepEqual(board(), { reason: ['Arguments aren\'t value!'] });
+      chai.assert.deepEqual(board(), { reason: ['Arguments are not value!'] });
     });
   });
 });

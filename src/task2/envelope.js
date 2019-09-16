@@ -1,3 +1,4 @@
+'use strict';
 export class Envelope {
   constructor({ width = '', height = '', name }) {
     this.width = !Number(width) ? width : Number(width);

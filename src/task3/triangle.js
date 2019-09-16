@@ -1,3 +1,4 @@
+'use strict';
 export class Triangle {
   constructor({vertices = '', side1 = 0, side2 = 0, side3 = 0}) {
     this.vertices = vertices.toUpperCase();

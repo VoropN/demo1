@@ -10,7 +10,7 @@ export const test4 = () => describe('Palindrome', function () {
     });
   });
   describe('Should return 0', function () {
-    it(`if palindrome isn\'t found => palindrome({ number: '213457310987652345679' })`, function () {
+    it(`if palindrome is not found => palindrome({ number: '213457310987652345679' })`, function () {
       chai.assert.deepEqual(palindrome({ number: '213457310987652345679' }), 0);
     });
   });
@@ -18,14 +18,14 @@ export const test4 = () => describe('Palindrome', function () {
     it(`if the argument passed is of type "number" and it may be rounding => palindrome({ number: 2134573209876523 })`, function () {
       chai.assert.deepEqual(palindrome({ number: 2134573209876523 }), { reason: ['Value is too big!'] });
     });
-    it(`if the value ​​can\'t be cast to a number => palindrome({ number: {} })`, function () {
+    it(`if the value ​​can not be cast to a number => palindrome({ number: {} })`, function () {
       chai.assert.deepEqual(palindrome({ number: {} }), { reason: ['Invalid value format!'] });
     });
     it(`if the argument is missing => palindrome({})`, function () {
-      chai.assert.deepEqual(palindrome({}), { reason: ['Value isn\'t entered!'] });
+      chai.assert.deepEqual(palindrome({}), { reason: ['Value is not entered!'] });
     });
     it(`if there are no parameters => palindrome()`, function () {
-      chai.assert.deepEqual(palindrome(), { reason: ['Value isn\'t entered!'] });
+      chai.assert.deepEqual(palindrome(), { reason: ['Value is not entered!'] });
     });
   });
 });

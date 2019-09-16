@@ -37,8 +37,16 @@ textarea {
 .buttons-addReset > button {
   margin: 15px;
 }
-.test {
+.test-page {
   position: fixed;
   left: 35px;
   top: 10px
+}
+.col__side {
+  max-width: 120px;
+}
+.home {
+  position: fixed; 
+  left: 35px; 
+  top: 10px;
 }

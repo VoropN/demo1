@@ -16,14 +16,14 @@ export const test2 = () => describe('Envelopes', function () {
     });
   });
   describe('Should return error: ', function () {
-    it('if the some arguments aren\'t numbers => new Packager({ width: "t", height: 9 }, { width: 5, height: 9.498 }).strategy', function () {
+    it('if the some arguments are not numbers => new Packager({ width: "t", height: 9 }, { width: 5, height: 9.498 }).strategy', function () {
       chai.assert.deepEqual(new Packager({ width: 't', height: 9 }, { width: 5, height: 9.498 }).strategy, [{ reason: ['Width Envelope1 must be a number!'] }]);
     });
-    it('if the some arguments aren\'t defined => new Packager({ width: "", height: 9}, { width: 5, height: 9.498 }).strategy', function () {
-      chai.assert.deepEqual(new Packager({ width: '', height: 9 }, { width: 5, height: 9.498 }).strategy, [{ reason: ['Width Envelope1 isn\'t defined!'] }]);
+    it('if the some arguments are not defined => new Packager({ width: "", height: 9}, { width: 5, height: 9.498 }).strategy', function () {
+      chai.assert.deepEqual(new Packager({ width: '', height: 9 }, { width: 5, height: 9.498 }).strategy, [{ reason: ['Width Envelope1 is not defined!'] }]);
     });
     it('if some arguments are missing => new Packager({ width: 10, height: 9}, { height: 9.498 }).strategy', function () {
-      chai.assert.deepEqual(new Packager({ width: 10, height: 9 }, { height: 9.498 }).strategy, [{ reason: ['Width Envelope2 isn\'t defined!'] }]);
+      chai.assert.deepEqual(new Packager({ width: 10, height: 9 }, { height: 9.498 }).strategy, [{ reason: ['Width Envelope2 is not defined!'] }]);
     });
     it('if no arguments passed => new Packager({}).strategy', function () {
       chai.assert.deepEqual(new Packager({}).strategy, [{ reason: ['Not enough envelopes!'] }]);

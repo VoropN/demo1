@@ -1,6 +1,6 @@
 import { checker } from './checkerNumericalSequence.js';
 
-"use strict";
+'use strict';
 export const numericalSequence = function numericalSequenceFunc({ length = '', minSqrt = '' } = {}) {
   let error = checker(length, minSqrt, arguments.length);
   if (error.status) return error;

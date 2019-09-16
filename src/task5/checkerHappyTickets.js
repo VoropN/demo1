@@ -1,6 +1,6 @@
 import { Error } from '../error.js';
 
-"use strict";
+'use strict';
 export const checker = function checkerHappyTickets({ min, max }, argsLength) {
   let error = new Error();
   if (!argsLength) {
@@ -8,35 +8,28 @@ export const checker = function checkerHappyTickets({ min, max }, argsLength) {
     return error;
   };
   // Min
-  switch (true) {
-    case Object.is('', min):
-      error.add('Min isn\'t defined!');
-      break;
-    case min < 0:
-      error.add('Min can\'t be less than zero!');
-      break;
-    case isNaN(min):
-      error.add('Min must be a number!');
-      break;
-    case String(min).length > 7:
-      error.add('Min is too big!');
-      break;
+  if (Object.is('', min)) {
+    error.add('Min is not defined!');
+  } else if (min < 0) {
+    error.add('Min can not be less than zero!');
+  } else if (isNaN(min)) {
+    error.add('Min must be a number!');
+  } else if (String(min).length > 7) {
+    error.add('Min is too big!');
   };
   // Max
-  switch (true) {
-    case Object.is('', max):
-      error.add('Max isn\'t defined!');
-      break;
-    case max < 10:
-      error.add('Max can\'t be less than 10!');
-      break;
-    case isNaN(max):
-      error.add('Max must be a number!');
-      break;
-    case String(max).length > 7:
-      error.add('Max is too big!');
-      break;
+  if (Object.is('', max)) {
+    error.add('Max is not defined!');
+  } else if (max < 10) {
+    error.add('Max can not be less than 10!');
+  } else if (isNaN(max)) {
+    error.add('Max must be a number!');
+  } else if (String(max).length > 7) {
+    error.add('Max is too big!');
   };
-  if (max && min && max - min < 1) error.add('Value max need to be more that min!');
+  // min >= max ?
+  if (max && min && max - min < 1) {
+    error.add('Value max need to be more that min!');
+  };
   return error;
 };

@@ -2,11 +2,13 @@ import { bine } from './bine.js';
 import { Context } from './context.js';
 import { checker } from './checkerFibonacci.js';
 
-"use strict";
+'use strict';
 export const fibonacci = function fibonacciFucn({ length = '', min = '', max = '' } = {}) {
   let context = new Context(length, min, max);
   let error = checker(context, arguments.length);
-  if (error.status) return error;
+  if (error.status) {
+    return error;
+  };
   let arrayNumbers = [];
   if (length) {
     arrayNumbers = [0, 1, 1].slice(0, length);
@@ -14,7 +16,8 @@ export const fibonacci = function fibonacciFucn({ length = '', min = '', max = '
       arrayNumbers[i] = arrayNumbers[i - 1] + arrayNumbers[i - 2];
     };
   } else {
-    arrayNumbers = [...Array(Number(context.max) - Number(context.min))].map((e, i) => bine(+context.min + i));
+    const min = 
+    arrayNumbers = [...Array(Number(context.max) - Number(context.min))].map((e, i) => bine(Number(context.min) + i));
   };
   return JSON.stringify(arrayNumbers);
 }

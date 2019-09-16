@@ -1,6 +1,6 @@
 import { checker } from './checkerTask1.js';
 
-"use strict";
+'use strict';
 export const board = function makeChessBoard({length = '', width = '', symbol = ''} = {}) {
   let error = checker(length, width, symbol, arguments.length);
   if (error.status) return error;

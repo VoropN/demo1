@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 export class Context {
   constructor(min, max) {
     this.min = min;
