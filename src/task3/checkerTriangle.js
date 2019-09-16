@@ -3,7 +3,7 @@ import { Error } from '../error.js';
 'use strict';
 export const checker = function checkerTriangle(triangle) {
   let error = new Error();
-  Object.entries(triangle).forEach((side) => {
+  Object.entries(triangle).forEach((side, i, arr) => {
     if (side[0] === 'vertices') {
       // vertices
       if (!side[1]) {
@@ -12,6 +12,8 @@ export const checker = function checkerTriangle(triangle) {
         error.add(`Vertices '${side[1]}' must be 3 letters!`);
       } else if (isNaN(triangle.square) || triangle.square <= 0) {
         error.add(`Triangle '${side[1]}' can not be built!`)
+      } else if (arr.length !== 4) {
+        error.add(`The vertices must have different names!`);
       };
     } else {
       // sides
