@@ -1,8 +1,8 @@
 'use strict';
 export class Context {
   constructor(length, min, max) {
-    this.length = length;
-    this.min = min;
-    this.max = max;
+    this.length = Number(length);
+    this.min = Number(min);
+    this.max = Number(max);
   }
 }
