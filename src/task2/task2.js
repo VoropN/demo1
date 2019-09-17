@@ -3,7 +3,7 @@ import { checker } from './checkerTask2.js';
 
 'use strict';
 export class Packager {
-  constructor(...envelopeArray) {
+  constructor(envelopeArray) {
     this.envelopeArray = envelopeArray.map(
       (envelope, i) => new Envelope({ width: envelope.width, height: envelope.height, name: `Envelope${i + 1}` }));
   }
