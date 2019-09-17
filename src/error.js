@@ -16,6 +16,6 @@ export class Error {
   }
 
   toString() {
-    return JSON.stringify(this);
+    return this.reason.join(' ');
   }
 }
