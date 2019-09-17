@@ -49,7 +49,7 @@ tasks.forEach((task, i) => {
     if (isDynamic) {
       formGroups = getFormGroups(task);
     };
-    let data = funcHandlers[i](...formGroups);
+    let data = funcHandlers[i](formGroups);
     if (data instanceof Error || data[0] instanceof Error) {
       error.innerHTML = 'Error: ' + data.toString();
       result instanceof HTMLTextAreaElement ? result.value = '' : result.innerHTML = '';
