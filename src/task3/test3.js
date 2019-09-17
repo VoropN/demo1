@@ -7,17 +7,17 @@ export const test3 = () => describe('Sort Triangle', function () {
       { vertices: ABC, side1: 22, side2: 30, side3: 21 },
       { vertices: 'DVS', side1: 9, side2: 3, side3: 7 })`, function () {
       chai.assert.equal(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AGC', side1: 12, side2: 31, side3: 31 },
           { vertices: 'ABC', side1: 22, side2: 30, side3: 21 },
           { vertices: 'DVS', side1: 9, side2: 3, side3: 7 }
-        ]), '["ABC","AGC","DVS"]');
+        ), '["ABC","AGC","DVS"]');
     });
     it(`if have single triangle, result: ['ABC'] => sortTriangle(
       { vertices: 'ABC', side1: 9, side2: 3, side3: 7 })`, function () {
       chai.assert.equal(
         sortTriangle(
-          [{ vertices: 'ABC', side1: 9, side2: 3, side3: 7 }]
+          { vertices: 'ABC', side1: 9, side2: 3, side3: 7 }
         ), '["ABC"]');
     });
     it(`if value of sides are numbers cast to strings, result: ['ABC','AGC','DVS'] => sortTriangle(
@@ -25,25 +25,25 @@ export const test3 = () => describe('Sort Triangle', function () {
       { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
       { vertices: 'dvs', side1: '9', side2: '3', side3: '7' })`, function () {
       chai.assert.equal(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AGC', side1: '12', side2: '31', side3: '31' },
           { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
           { vertices: 'dvs', side1: '9', side2: '3', side3: '7' }
-        ]), '["ABC","AGC","DVS"]');
+        ), '["ABC","AGC","DVS"]');
     });
     it(`if one ore more vertices are lowercase, result: ['ABC','AGC','DVS'] => sortTriangle(
       { vertices: 'agc', side1: 12, side2: 31, side3: 31 },
       { vertices: abc, side1: 22, side2: 30, side3: 21 },
       { vertices: 'dvs', side1: 9, side2: 3, side3: 7 })`, function () {
       chai.assert.equal(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'agc', side1: 12, side2: 31, side3: 31 },
           { vertices: 'abc', side1: 22, side2: 30, side3: 21 },
           { vertices: 'dvs', side1: 9, side2: 3, side3: 7 }
-        ]), '["ABC","AGC","DVS"]');
+        ), '["ABC","AGC","DVS"]');
     });
     it('if the function is called without arguments, result: [] => sortTriangle()', function () {
-      chai.assert.equal(sortTriangle([]), '[]');
+      chai.assert.equal(sortTriangle(), '[]');
     });
   });
   describe('Should return error:', function () {
@@ -52,51 +52,51 @@ export const test3 = () => describe('Sort Triangle', function () {
       { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
       { vertices: 'dvs', side1: '9', side2: '3', side3: '7' })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AG', side1: '12', side2: '31', side3: '31' },
           { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
           { vertices: 'dvs', side1: '9', side2: '3', side3: '7' }
-        ]), [{ reason: ['Vertices \'AG\' must be 3 letters!'] }]);
+        ), [{ reason: ['Vertices \'AG\' must be 3 letters!'] }]);
     });
     it(`if one or more triangles can not be built => sortTriangle(
       { vertices: 'AGf', side1: '100', side2: '31', side3: '31' },
       { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
       { vertices: 'dvs', side1: '9', side2: '3', side3: '7' })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AGf', side1: '100', side2: '31', side3: '31' },
           { vertices: 'ABC', side1: '22', side2: '30', side3: '21' },
           { vertices: 'dvs', side1: '9', side2: '3', side3: '7' }
-        ]), [{ reason: ['Triangle \'AGF\' can not be built!'] }]);
+        ), [{ reason: ['Triangle \'AGF\' can not be built!'] }]);
     });
     it(`if one or more sides of the triangle don't have value => sortTriangle(
       { vertices: 'AGf', side1: '', side2: '31', side3: '31' },
       { vertices: 'ABC', side1: '22', side2: '30', side3: '21' })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AGf', side1: '', side2: '31', side3: '31' },
           { vertices: 'ABC', side1: '22', side2: '30', side3: '21' }
-        ]), [{ reason: ['Triangle \'AGF\' can not be built!', 'Vertex \'a\' is not defined!'] }]);
+        ), [{ reason: ['Triangle \'AGF\' can not be built!', 'Vertex \'a\' is not defined!'] }]);
     });
     it(`if one or more sides of the triangle are missing => sortTriangle(
       { vertices: 'AGf', side2: '31', side3: '31' },
       { vertices: 'ABC', side1: '22', side2: '30', side3: '21' })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([
+        sortTriangle(
           { vertices: 'AGf', side2: '31', side3: '31' },
           { vertices: 'ABC', side1: '22', side2: '30', side3: '21' }
-         ]), [{ reason: ['Triangle \'AGF\' can not be built!', 'Vertex \'a\' is not defined!'] }]);
+        ), [{ reason: ['Triangle \'AGF\' can not be built!', 'Vertex \'a\' is not defined!'] }]);
     });
     it(`if one or more triangles have no parameters => sortTriangle(
       { }, { vertices: 'ABC', side1: '22', side2: '30', side3: '21' })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([
+        sortTriangle(
           { }, { vertices: 'ABC', side1: '22', side2: '30', side3: '21' }
-        ]), [{ reason: ['Vertices are not defined!'] }]);
+        ), [{ reason: ['Vertices are not defined!'] }]);
     });
     it(`if triangle have no parameters => sortTriangle({ })`, function () {
       chai.assert.deepEqual(
-        sortTriangle([{ }]), [{ reason: ['Vertices are not defined!'] }]);
+        sortTriangle({ }), [{ reason: ['Vertices are not defined!'] }]);
     });
   });
 });
